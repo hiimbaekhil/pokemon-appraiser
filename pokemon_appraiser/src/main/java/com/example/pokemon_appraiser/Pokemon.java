@@ -1,7 +1,10 @@
 package com.example.pokemon_appraiser;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.io.Serializable;
 
+@Document("pokemons")
 public class Pokemon implements Serializable {
     private String league;
     private String name;
@@ -24,6 +27,18 @@ public class Pokemon implements Serializable {
         this.ranking = ranking;
         this.moves = moves;
         this.rating = rating;
+    }
+
+    public Pokemon(Pokemon pokemon) {
+        this.league = pokemon.getLeague();
+        this.name = pokemon.getName();
+        this.type1 = pokemon.getType1();
+        this.type2 = pokemon.getType2();
+        this.ranking = pokemon.getRanking();
+        this.moves = pokemon.getMoves();
+        this.rating = pokemon.getRating();
+        this.iv = pokemon.getIv();
+        this.cp = pokemon.getCp();
     }
 
     public String getLeague() {
